@@ -1,0 +1,90 @@
+.user {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar {
+  align-self: center;
+  margin-bottom: 25px;
+
+  img {
+    width: 200px;
+    height: 200px;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 7px solid white;
+  }
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 25px;
+  background: white;
+
+  .info {
+    h4 {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+
+      span {
+        font-size: 32px;
+        color: #88898a;
+      }
+
+      div {
+        border-radius: 50%;
+        background: #0fc19e;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10px;
+
+        svg {
+          color: #fff;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+
+  button {
+    font-family: 'Varela Round', sans-serif;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 13px 31px;
+    color: #fff !important;
+    background: #0fc19e;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 5px;
+    height: fit-content;
+
+    &:hover {
+      background: #1ea88d;
+    }
+
+    .icon {
+      margin-right: 7px;
+    }
+  }
+}
+
+.description {
+  font-size: 15px;
+  color: #848484;
+  margin: 0 0 15px 0;
+
+  span {
+    color: #0fc19e;
+  }
+}
+
+.site {
+  font-size: 15px;
+  color: #aaa;
+}

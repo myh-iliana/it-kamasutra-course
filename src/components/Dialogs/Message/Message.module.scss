@@ -1,0 +1,49 @@
+.message {
+  display: flex;
+  margin: 20px 0;
+
+  &.author {
+    justify-content: flex-end;
+
+    .avatar {
+      order: 2;
+      margin-right: 20px;
+      margin-left: 15px;
+    }
+
+    .text {
+      order: 1;
+
+      p {
+        color: #fff;
+        background-color: #0fc19e;
+      }
+    }
+  }
+}
+
+.avatar {
+  order: 1;
+  margin-left: 20px;
+  margin-right: 15px;
+  align-self: flex-end;
+}
+
+.text {
+  order: 2;
+
+  p {
+    max-width: 420px;
+    background-color: #f4f4f4;
+    color: #686868;
+    padding: 10px 15px;
+    border-radius: 15px;
+    line-height: 22px;
+    margin-bottom: 10px;
+  }
+
+  span {
+    color: #aaa;
+    font-size: 13px;
+  }
+}

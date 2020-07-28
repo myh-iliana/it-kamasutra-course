@@ -1,0 +1,56 @@
+@mixin side-col($first_img, $last_img) {
+  width: 25%;
+
+  div {
+    color: #fff;
+    height: 250px;
+    width: 100%;
+    box-shadow: 0 5px 25px 0 rgba(123,123,123,.15);
+
+    &:first-child {
+      background: linear-gradient( rgba(34,34,34,0.45), rgba(34,34,34,0.45)), url($first_img) center no-repeat;
+      background-size: cover;
+    }
+
+    &:last-child {
+      background: linear-gradient( rgba(34,34,34,0.45), rgba(34,34,34,0.45)), url($last_img) center no-repeat;
+      background-size: cover;
+    }
+  }
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  margin-top: -87px !important;
+}
+
+.nav {
+  margin: 20px 0;
+}
+
+.row {
+  display: flex;
+
+  .col_left {
+    @include side-col('../../img/1.jpg', '../../img/5.jpg');
+  }
+
+  .col_right {
+    @include side-col('../../img/3.jpg', '../../img/2.jpg');
+  }
+
+  .col_center {
+    width: 50%;
+
+    div {
+      color: #fff;
+      height: 500px;
+      width: 100%;
+      box-shadow: 0 5px 25px 0 rgba(123,123,123,.15);
+
+      background: linear-gradient( rgba(34,34,34,0.45), rgba(34,34,34,0.45)), url('../../img/4.jpg') center no-repeat;
+      background-size: cover;
+    }
+  }
+}

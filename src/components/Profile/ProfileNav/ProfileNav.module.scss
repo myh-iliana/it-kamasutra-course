@@ -1,0 +1,31 @@
+.nav {
+  display: flex;
+  background: white;
+  padding: 15px 0;
+  justify-content: center;
+
+  > div {
+    margin: 3px 15px;
+
+    a {
+      color: #848484;
+      text-decoration: none;
+
+      &:hover {
+        color: #0fc19e;
+      }
+
+      &.activeLink {
+        color: #88898a;
+        font-weight: 700;
+      }
+    }
+
+    span {
+      background-color: #0fc19e;
+      padding: 3px;
+      border-radius: 50%;
+      color: #fff;
+    }
+  }
+}
