@@ -123,26 +123,30 @@ const store = {
       ],
     }
   },
+
   _callSubscriber() {
     console.log('State changed!')
   },
+
   getState() {
     return this._state;
-  },
-  addPost(text) {
-    const newPost = {
-      id: 8,
-      image: 'https://www.hodderscape.co.uk/wp-content/uploads/2016/05/CityDreaming1905-260x400.jpg',
-      likes: text,
-    };
-
-    this._state.profile.posts.push(newPost);
-
-    this._callSubscriber();
   },
 
   subscribe (observer) {
     this._callSubscriber = observer;
+  },
+
+  dispatch(action) {
+    if (action.type === 'ADD_POST') {
+      const newPost = {
+        id: 8,
+        image: 'https://www.hodderscape.co.uk/wp-content/uploads/2016/05/CityDreaming1905-260x400.jpg',
+        likes: action.text,
+      };
+
+      this._state.profile.posts.push(newPost);
+      this._callSubscriber();
+    }
   },
 };
 

@@ -10,7 +10,7 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
-function App({ state, addPost }) {
+function App({ state, dispatch }) {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -20,7 +20,7 @@ function App({ state, addPost }) {
         <div className="app-content">
           <Route
             path="/profile"
-            render={() => <Profile posts={state.profile.posts} addPost={addPost} />}
+            render={() => <Profile posts={state.profile.posts} dispatch={dispatch} />}
           />
           <Route
             path="/dialogs"

@@ -4,10 +4,10 @@ import s from "./Posts.module.scss";
 import Post from "./Post/Post";
 import AddPostInput from "../AddPostInput/AddPostInput";
 
-const Posts = ({ posts, addPost }) => {
+const Posts = ({ posts, dispatch }) => {
   return (
     <div className={s.posts}>
-      <AddPostInput addPost={addPost} />
+      <AddPostInput dispatch={dispatch} />
 
       {posts.map(({ likes, image }) => {
         return (

@@ -5,13 +5,17 @@ import { faCamera, faVideo } from "@fortawesome/free-solid-svg-icons";
 import s from './AddPostInput.module.scss';
 import Container from "../../Container/Container";
 
-const AddPostInput = ({ addPost }) => {
+const AddPostInput = ({ dispatch }) => {
   const [value, setValue] = useState('');
 
   const handleChange = e => setValue(e.target.value);
 
-  const onAddPost = () => {
-    addPost(value);
+  const onPostAdd = () => {
+    const action = {
+      type: 'ADD_POST',
+      text: value,
+    };
+    dispatch(action);
   };
 
   return (
@@ -28,7 +32,7 @@ const AddPostInput = ({ addPost }) => {
                 <FontAwesomeIcon icon={faVideo} />
               </span>
             </div>
-            <button onClick={onAddPost}>Upload</button>
+            <button onClick={onPostAdd}>Upload</button>
           </div>
         </div>
       </Container>
