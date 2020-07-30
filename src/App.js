@@ -28,10 +28,10 @@ function App({ state, dispatch }) {
               <Dialogs
                 dialogs={state.messages.dialogs}
                 mainUser={state.profile.mainUser}
+                dispatch={dispatch}
               />
             )}
           />
-          {/*<Route path='/dialogs/:id' component={Dialogs} />*/}
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
           <Route path="/settings" component={Settings} />

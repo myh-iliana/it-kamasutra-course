@@ -9,6 +9,9 @@ import Ava8 from "../img/ava-8.jpg";
 import Ava9 from "../img/ava-9.jpg";
 import AvaMain from "../img/ava-main.jpg";
 
+const ADD_POST = 'ADD_POST';
+const ADD_MESSAGE = 'ADD_MESSAGE';
+
 const store = {
   _state: {
     profile: {
@@ -17,6 +20,13 @@ const store = {
         username: "Alex Grannte",
         avatar: AvaMain,
       },
+      users: [
+        {
+          id: 1,
+          username: "Anthony McCartney",
+          avatar: Ava1,
+        }
+      ],
       posts: [
         {
           id: 1,
@@ -63,6 +73,56 @@ const store = {
           avatar: Ava1,
           lastMessage: "Lorem ipsum dolor sit amet dsfsd eegjxyw fetret",
           lastTime: "1:55 PM",
+          messages: [
+            {
+              id: 1,
+              ownerId: 0,
+              createdAt: 'Sat, Aug 23, 1:08 PM',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.',
+            },
+            {
+              id: 2,
+              ownerId: 1,
+              createdAt: '5 minutes ago',
+              text: 'Cras ultricies ligula.',
+            },
+            {
+              id: 3,
+              ownerId: 0,
+              createdAt: 'Sat, Aug 23, 1:08 PM',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.',
+            },
+            {
+              id: 4,
+              ownerId: 1,
+              createdAt: '5 minutes ago',
+              text: 'Cras ultricies ligula.',
+            },
+            {
+              id: 5,
+              ownerId: 0,
+              createdAt: 'Sat, Aug 23, 1:08 PM',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.',
+            },
+            {
+              id: 6,
+              ownerId: 1,
+              createdAt: '2 minutes ago',
+              text: 'Lorem ipsum dolor sit amet',
+            },
+            {
+              id: 7,
+              ownerId: 0,
+              createdAt: 'Sat, Aug 23, 1:08 PM',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.',
+            },
+            {
+              id: 8,
+              ownerId: 1,
+              createdAt: '2 minutes ago',
+              text: 'Lorem ipsum dolor sit amet',
+            },
+          ],
         },
         {
           id: 2,
@@ -137,17 +197,46 @@ const store = {
   },
 
   dispatch(action) {
-    if (action.type === 'ADD_POST') {
+    if (action.type === ADD_POST) {
       const newPost = {
         id: 8,
-        image: 'https://www.hodderscape.co.uk/wp-content/uploads/2016/05/CityDreaming1905-260x400.jpg',
-        likes: action.text,
+        image: action.image,
+        likes: 0,
+        text: action.text,
       };
 
-      this._state.profile.posts.push(newPost);
-      this._callSubscriber();
+      this._state.profile.posts.unshift(newPost);
+      this._callSubscriber(this._state);
+    } else if (action.type === ADD_MESSAGE) {
+      const createdAt = new Date(Date.now());
+
+      const newMessage = {
+        id: 9,
+        createdAt: createdAt.toLocaleTimeString(),
+        ownerId: action.ownerId,
+        text: action.text,
+      };
+
+      this._state.messages.dialogs[0].messages.push(newMessage);
+      this._callSubscriber(this._state);
     }
   },
+};
+
+export const addPost = (value, image) => {
+  return {
+    type: ADD_POST,
+    text: value,
+    image,
+  }
+};
+
+export const addMessage = (ownerId, text) => {
+  return {
+    type: ADD_MESSAGE,
+    ownerId,
+    text,
+  }
 };
 
 export default store;

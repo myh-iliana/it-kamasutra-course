@@ -4,15 +4,7 @@ import { NavLink } from "react-router-dom";
 import s from "./Dialog.module.scss";
 import Avatar from "../../Avatar/Avatar";
 
-const Dialog = ({
-  name,
-  lastMessage,
-  lastTime,
-  img,
-  online,
-  id,
-  ...props
-}) => {
+const Dialog = ({name, lastMessage, lastTime, img, online, id, ...props}) => {
   return (
     // <div className={`${s.dialog} ${active && s.active}`} {...props}>
       <NavLink to={`/dialogs/${id}`} className={s.link} activeClassName={s.active}>

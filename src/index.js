@@ -7,10 +7,10 @@ import * as serviceWorker from "./serviceWorker";
 import App from "./App";
 import store from "./redux/state";
 
-const rerenderEntireTree = () => {
+const rerenderEntireTree = (state) => {
   ReactDOM.render(
       <React.StrictMode>
-        <App state={store.getState()} dispatch={store.dispatch.bind(store)} />
+        <App state={state} dispatch={store.dispatch.bind(store)} />
       </React.StrictMode>,
       document.getElementById("root")
   );

@@ -4,6 +4,7 @@ import { faCamera, faVideo } from "@fortawesome/free-solid-svg-icons";
 
 import s from './AddPostInput.module.scss';
 import Container from "../../Container/Container";
+import { addPost } from "../../../redux/state";
 
 const AddPostInput = ({ dispatch }) => {
   const [value, setValue] = useState('');
@@ -11,11 +12,8 @@ const AddPostInput = ({ dispatch }) => {
   const handleChange = e => setValue(e.target.value);
 
   const onPostAdd = () => {
-    const action = {
-      type: 'ADD_POST',
-      text: value,
-    };
-    dispatch(action);
+    dispatch(addPost(value, 'https://www.hodderscape.co.uk/wp-content/uploads/2016/05/CityDreaming1905-260x400.jpg'));
+    setValue('');
   };
 
   return (
