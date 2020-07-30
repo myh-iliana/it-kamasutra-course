@@ -4,7 +4,7 @@ import { faCamera, faVideo } from "@fortawesome/free-solid-svg-icons";
 
 import s from './AddPostInput.module.scss';
 import Container from "../../Container/Container";
-import { addPost } from "../../../redux/state";
+import { addPost } from "../../../redux/profileReducer";
 
 const AddPostInput = ({ dispatch }) => {
   const [value, setValue] = useState('');

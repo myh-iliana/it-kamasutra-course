@@ -8,9 +8,8 @@ import Ava7 from "../img/ava-7.jpg";
 import Ava8 from "../img/ava-8.jpg";
 import Ava9 from "../img/ava-9.jpg";
 import AvaMain from "../img/ava-main.jpg";
-
-const ADD_POST = 'ADD_POST';
-const ADD_MESSAGE = 'ADD_MESSAGE';
+import profileReducer from "./profileReducer";
+import dialogsReducer from "./dialogsReducer";
 
 const store = {
   _state: {
@@ -20,13 +19,6 @@ const store = {
         username: "Alex Grannte",
         avatar: AvaMain,
       },
-      users: [
-        {
-          id: 1,
-          username: "Anthony McCartney",
-          avatar: Ava1,
-        }
-      ],
       posts: [
         {
           id: 1,
@@ -197,46 +189,11 @@ const store = {
   },
 
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      const newPost = {
-        id: 8,
-        image: action.image,
-        likes: 0,
-        text: action.text,
-      };
+    this._state.profile = profileReducer(this._state.profile, action);
+    this._state.messages = dialogsReducer(this._state.messages, action);
 
-      this._state.profile.posts.unshift(newPost);
-      this._callSubscriber(this._state);
-    } else if (action.type === ADD_MESSAGE) {
-      const createdAt = new Date(Date.now());
-
-      const newMessage = {
-        id: 9,
-        createdAt: createdAt.toLocaleTimeString(),
-        ownerId: action.ownerId,
-        text: action.text,
-      };
-
-      this._state.messages.dialogs[0].messages.push(newMessage);
-      this._callSubscriber(this._state);
-    }
+    this._callSubscriber(this._state);
   },
-};
-
-export const addPost = (value, image) => {
-  return {
-    type: ADD_POST,
-    text: value,
-    image,
-  }
-};
-
-export const addMessage = (ownerId, text) => {
-  return {
-    type: ADD_MESSAGE,
-    ownerId,
-    text,
-  }
 };
 
 export default store;

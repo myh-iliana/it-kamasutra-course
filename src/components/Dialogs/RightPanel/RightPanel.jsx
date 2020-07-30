@@ -12,7 +12,7 @@ import AvaMain from "../../../img/ava-main.jpg";
 import s from "./RightPanel.module.scss";
 import Avatar from "../../Avatar/Avatar";
 import Message from "../Message/Message";
-import { addMessage } from "../../../redux/state";
+import { addMessage } from "../../../redux/dialogsReducer";
 
 const RightPanel = ({ messages, dispatch }) => {
   const [value, setValue] = useState("");
@@ -21,7 +21,6 @@ const RightPanel = ({ messages, dispatch }) => {
 
   const onMessageSend = e => {
     if (e.which === 13) {
-      // debugger
       dispatch(addMessage(0, value));
       setValue('');
     }
