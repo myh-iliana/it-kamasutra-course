@@ -7,7 +7,7 @@ import User from "./User/User";
 import Container from "../Container/Container";
 import ProfileNav from "./ProfileNav/ProfileNav";
 
-const Profile = ({ posts, dispatch }) => {
+const Profile = ({ store }) => {
   return (
       <React.Fragment>
         <div className={s.row}>
@@ -29,7 +29,7 @@ const Profile = ({ posts, dispatch }) => {
           <div className={s.nav}>
             <ProfileNav />
           </div>
-          <Route path='/profile/posts' render={() => <Posts posts={posts} dispatch={dispatch} />} />
+          <Route path='/profile/posts' render={() => <Posts store={store} />} />
         </Container>
       </React.Fragment>
   );

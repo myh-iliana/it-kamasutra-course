@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import s from './LeftPanel.module.scss';
-import Dialog from "../Dialog/Dialog";
+import DialogsListContainer from "./DialogsList/DialogsListContainer";
 
-const LeftPanel = ({ items }) => {
+const LeftPanel = ({ store }) => {
   return (
       <div className={s.container}>
         <header className={s.header}>
@@ -19,23 +19,7 @@ const LeftPanel = ({ items }) => {
           </div>
         </header>
 
-        <div className={s.dialogs}>
-          <div className={s.list}>
-            {items.map((dialog, i) => {
-              return (
-                  <Dialog
-                      key={dialog.id}
-                      id={dialog.id}
-                      online={i === 0 && true}
-                      name={dialog.username}
-                      lastMessage={dialog.lastMessage}
-                      lastTime={dialog.lastTime}
-                      img={dialog.avatar}
-                  />
-              );
-            })}
-          </div>
-        </div>
+        <DialogsListContainer store={store} />
       </div>
   );
 };

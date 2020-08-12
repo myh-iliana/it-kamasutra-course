@@ -1,7 +1,7 @@
 import React from 'react';
 
 import s from './Message.module.scss';
-import Avatar from "../../Avatar/Avatar";
+import Avatar from "../../../Avatar/Avatar";
 
 const Message = ({ author, avatar, children, time }) => {
   return (

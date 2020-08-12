@@ -10,7 +10,7 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
-function App({ state, dispatch }) {
+function App({ store }) {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -20,17 +20,11 @@ function App({ state, dispatch }) {
         <div className="app-content">
           <Route
             path="/profile"
-            render={() => <Profile posts={state.profile.posts} dispatch={dispatch} />}
+            render={() => <Profile store={store} />}
           />
           <Route
             path="/dialogs"
-            render={() => (
-              <Dialogs
-                dialogs={state.messages.dialogs}
-                mainUser={state.profile.mainUser}
-                dispatch={dispatch}
-              />
-            )}
+            render={() => <Dialogs store={store} />}
           />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />

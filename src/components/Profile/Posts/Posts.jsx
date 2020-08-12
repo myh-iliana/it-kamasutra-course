@@ -1,22 +1,15 @@
 import React from "react";
 
 import s from "./Posts.module.scss";
-import Post from "./Post/Post";
-import AddPostInput from "../AddPostInput/AddPostInput";
+import AddPostInputContainer from "./AddPostInput/AddPostInputContainer";
+import PostsListContainer from "./PostsList/PostsListContainer";
 
-const Posts = ({ posts, dispatch }) => {
+const Posts = ({ store }) => {
   return (
     <div className={s.posts}>
-      <AddPostInput dispatch={dispatch} />
+      <AddPostInputContainer store={store} />
 
-      {posts.map(({ likes, image }) => {
-        return (
-          <Post
-            likes={likes}
-            image={image}
-          />
-        );
-      })}
+      <PostsListContainer store={store} />
     </div>
   );
 };

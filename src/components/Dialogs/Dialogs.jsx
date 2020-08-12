@@ -5,12 +5,12 @@ import Container from "../Container/Container";
 import LeftPanel from "./LeftPanel/LeftPanel";
 import RightPanel from "./RightPanel/RightPanel";
 
-const Dialogs = ({ dialogs, mainUser, dispatch }) => {
+const Dialogs = ({ store }) => {
   return (
     <Container white className={s.dialogs}>
-      <LeftPanel items={dialogs} />
+      <LeftPanel store={store} />
 
-      <RightPanel mainUser={mainUser} messages={dialogs[0].messages} dispatch={dispatch} />
+      <RightPanel store={store} />
     </Container>
   );
 };
