@@ -11,7 +11,7 @@ const AddMessageInput = ({ sendMessage }) => {
 
   const onMessageSend = e => {
     if (e.which === 13) {
-      sendMessage(0, value);
+      sendMessage(1, 0, value);
       setValue('');
     }
   };

@@ -1,23 +1,16 @@
-import React from 'react';
+import React from "react";
+import { connect } from "react-redux";
 
 import AddMessageInput from "./AddMessageInput";
 
 import { addMessage } from "../../../../store/actions";
-import StoreContext from "../../../../StoreContext";
 
-const AddMessageInputContainer = () => {
-
-  return (
-      <StoreContext.Consumer>
-        {(store) => {
-          const onMessageSend = (ownerId, text) => {
-            store.dispatch(addMessage(ownerId, text));
-          };
-
-          return <AddMessageInput sendMessage={onMessageSend} />;
-        }}
-      </StoreContext.Consumer>
-  );
+const mapDispatchToProps = (dispatch) => {
+  return {
+    sendMessage: (chatId, ownerId, text) => dispatch(addMessage(chatId, ownerId, text)),
+  };
 };
+
+const AddMessageInputContainer = connect(null, mapDispatchToProps)(AddMessageInput);
 
 export default AddMessageInputContainer;

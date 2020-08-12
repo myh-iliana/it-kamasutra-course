@@ -1,11 +1,15 @@
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const ADD_POST = 'ADD_POST';
 
-export const addMessage = (ownerId, text) => {
+export const addMessage = (chatId, ownerId, text) => {
+  const createdAt = new Date(Date.now());
+
   return {
     type: ADD_MESSAGE,
+    chatId,
     ownerId,
     text,
+    createdAt: createdAt.toLocaleTimeString(),
   }
 };
 

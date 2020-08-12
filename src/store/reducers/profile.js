@@ -57,8 +57,10 @@ const profile = (state = initialState, action) => {
         text: action.text,
       };
 
-      state.posts.unshift(newPost);
-      return state;
+      return {
+        ...state,
+        posts: [newPost, ...state.posts],
+      };
 
     default: return state;
   }

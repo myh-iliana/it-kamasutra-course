@@ -4,11 +4,11 @@ import s from './DialogsList.module.scss';
 
 import Dialog from "../Dialog/Dialog";
 
-const DialogsList = ({ items }) => {
+const DialogsList = ({ dialogs }) => {
   return (
       <div>
         <div className={s.list}>
-          {items.map((dialog, i) => {
+          {dialogs.map((dialog, i) => {
             return (
                 <Dialog
                     key={dialog.id}

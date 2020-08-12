@@ -12,7 +12,7 @@ import Ava9 from "../../img/ava-9.jpg";
 import { ADD_MESSAGE } from "../actions";
 
 const initialState = {
-  items: [
+  chats: [
     {
       id: 1,
       username: "Anthony McCartney",
@@ -133,17 +133,27 @@ export const dialogs = (state = initialState, action) => {
 
   switch (action.type) {
     case ADD_MESSAGE:
-      const createdAt = new Date(Date.now());
-
       const newMessage = {
         id: 9,
-        createdAt: createdAt.toLocaleTimeString(),
+        createdAt: action.createdAt,
         ownerId: action.ownerId,
         text: action.text,
       };
 
-      state.items[0].messages.push(newMessage);
-      return state;
+      const chatIndex = state.chats.findIndex(item => item.id === action.chatId);
+      const chat = state.chats[chatIndex];
+
+      return {
+        ...state,
+        chats: [
+            ...state.chats.slice(0, chatIndex),
+          {
+            ...chat,
+            messages: [...chat.messages, newMessage] ,
+          },
+            ...state.chats.slice(chatIndex + 1)
+        ],
+      };
 
     default: return state;
   }

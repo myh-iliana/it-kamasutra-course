@@ -1,21 +1,15 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import AddPostInput from "./AddPostInput";
 import { addPost } from "../../../../store/actions";
-import StoreContext from "../../../../StoreContext";
 
-const AddPostInputContainer = () => {
-  return (
-    <StoreContext.Consumer>
-      {(store) => {
-        const onPostAdd = (text, image) => {
-          store.dispatch(addPost(text, image));
-        };
-
-        return <AddPostInput addPost={onPostAdd} />;
-      }}
-    </StoreContext.Consumer>
-  );
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addPost: (text, image) => dispatch(addPost(text, image)),
+  };
 };
+
+const AddPostInputContainer = connect(null, mapDispatchToProps)(AddPostInput);
 
 export default AddPostInputContainer;

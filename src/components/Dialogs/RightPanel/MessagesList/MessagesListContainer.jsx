@@ -1,18 +1,14 @@
 import React from 'react';
+import { connect } from "react-redux";
 
 import MessagesList from "./MessagesList";
-import StoreContext from "../../../../StoreContext";
 
-const MessagesListContainer = () => {
-  return (
-      <StoreContext.Consumer>
-        {(store) => {
-          const state = store.getState().dialogs;
-
-          return <MessagesList items={state.items[0].messages} />;
-        }}
-      </StoreContext.Consumer>
-  );
+const mapStateToProps = (state) => {
+  return {
+    messages: state.dialogs.chats[0].messages,
+  };
 };
+
+const MessagesListContainer = connect(mapStateToProps)(MessagesList);
 
 export default MessagesListContainer;

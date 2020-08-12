@@ -7,10 +7,10 @@ import s from './MessagesList.module.scss';
 
 import Message from "../Message/Message";
 
-const MessagesList = ({ items }) => {
+const MessagesList = ({ messages }) => {
   return (
       <React.Fragment>
-        {items.map(({ ownerId, createdAt, text, id }) => {
+        {messages.map(({ ownerId, createdAt, text, id }) => {
           const isLoggedUser = ownerId === 0;
           return (
               <Message
