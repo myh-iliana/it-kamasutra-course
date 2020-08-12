@@ -4,12 +4,12 @@ import s from "./Posts.module.scss";
 import AddPostInputContainer from "./AddPostInput/AddPostInputContainer";
 import PostsListContainer from "./PostsList/PostsListContainer";
 
-const Posts = ({ store }) => {
+const Posts = () => {
   return (
     <div className={s.posts}>
-      <AddPostInputContainer store={store} />
+      <AddPostInputContainer />
 
-      <PostsListContainer store={store} />
+      <PostsListContainer />
     </div>
   );
 };

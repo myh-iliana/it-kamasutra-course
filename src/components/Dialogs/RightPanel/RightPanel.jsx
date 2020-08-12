@@ -8,7 +8,7 @@ import Avatar from "../../Avatar/Avatar";
 import MessagesListContainer from "./MessagesList/MessagesListContainer";
 import AddMessageInputContainer from "./AddMessageInput/AddMessageInputContainer";
 
-const RightPanel = ({ store }) => {
+const RightPanel = () => {
   return (
     <div className={s.container}>
       <header className={s.header}>
@@ -23,11 +23,11 @@ const RightPanel = ({ store }) => {
       </header>
 
       <main className={s.main}>
-        <MessagesListContainer store={store} />
+        <MessagesListContainer />
       </main>
 
       <footer className={s.footer}>
-        <AddMessageInputContainer store={store} />
+        <AddMessageInputContainer />
       </footer>
     </div>
   );

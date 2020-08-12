@@ -10,7 +10,7 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
-function App({ store }) {
+function App() {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -20,11 +20,11 @@ function App({ store }) {
         <div className="app-content">
           <Route
             path="/profile"
-            render={() => <Profile store={store} />}
+            render={() => <Profile />}
           />
           <Route
             path="/dialogs"
-            render={() => <Dialogs store={store} />}
+            render={() => <Dialogs />}
           />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />

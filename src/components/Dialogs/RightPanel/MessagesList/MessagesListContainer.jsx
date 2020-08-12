@@ -1,12 +1,17 @@
 import React from 'react';
 
 import MessagesList from "./MessagesList";
+import StoreContext from "../../../../StoreContext";
 
-const MessagesListContainer = ({ store }) => {
-  const state = store.getState().dialogs;
-
+const MessagesListContainer = () => {
   return (
-      <MessagesList items={state.items[0].messages} />
+      <StoreContext.Consumer>
+        {(store) => {
+          const state = store.getState().dialogs;
+
+          return <MessagesList items={state.items[0].messages} />;
+        }}
+      </StoreContext.Consumer>
   );
 };
 

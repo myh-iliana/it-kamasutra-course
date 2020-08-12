@@ -5,7 +5,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import s from './LeftPanel.module.scss';
 import DialogsListContainer from "./DialogsList/DialogsListContainer";
 
-const LeftPanel = ({ store }) => {
+const LeftPanel = () => {
   return (
       <div className={s.container}>
         <header className={s.header}>
@@ -19,7 +19,7 @@ const LeftPanel = ({ store }) => {
           </div>
         </header>
 
-        <DialogsListContainer store={store} />
+        <DialogsListContainer />
       </div>
   );
 };

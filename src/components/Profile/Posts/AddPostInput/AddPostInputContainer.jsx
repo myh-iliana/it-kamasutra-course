@@ -1,16 +1,20 @@
-import React from 'react';
+import React from "react";
 
-import { addPost } from "../../../../store/actions";
 import AddPostInput from "./AddPostInput";
+import { addPost } from "../../../../store/actions";
+import StoreContext from "../../../../StoreContext";
 
-
-const AddPostInputContainer = ({ store }) => {
-  const onPostAdd = (text, image) => {
-    store.dispatch(addPost(text, image));
-  };
-
+const AddPostInputContainer = () => {
   return (
-      <AddPostInput addPost={onPostAdd} />
+    <StoreContext.Consumer>
+      {(store) => {
+        const onPostAdd = (text, image) => {
+          store.dispatch(addPost(text, image));
+        };
+
+        return <AddPostInput addPost={onPostAdd} />;
+      }}
+    </StoreContext.Consumer>
   );
 };
 
