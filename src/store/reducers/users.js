@@ -1,4 +1,4 @@
-import { FOLLOW_USER, SET_TOTAL_USERS_COUNT, SET_USERS, UNFOLLOW_USER } from "../actions";
+import {FOLLOW_USER, SET_IS_LOADING, SET_TOTAL_USERS_COUNT, SET_USERS, UNFOLLOW_USER} from "../actions";
 
 const initialState = {
   users: [],
@@ -47,6 +47,12 @@ const profile = (state = initialState, action) => {
       return {
         ...state,
         totalUsersCount: action.totalCount,
+      };
+
+    case SET_IS_LOADING:
+      return {
+        ...state,
+        isLoading: action.isLoading,
       };
 
     default:

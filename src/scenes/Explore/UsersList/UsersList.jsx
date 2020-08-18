@@ -7,7 +7,6 @@ import Container from "../../../components/Container/Container";
 
 const UsersList = (props) => {
   const { users, followUser, unfollowUser, totalUsersCount, pageSize, onPageChanged } = props;
-  console.log(props)
 
   const PAGES_COUNT = Math.ceil(totalUsersCount / pageSize);
 
