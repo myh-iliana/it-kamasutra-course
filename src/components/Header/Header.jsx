@@ -43,7 +43,7 @@ const Header = () => {
         </Link>
 
         <div className={s.user}>
-          <Avatar img={AvaMain} size='25px' />
+          <Avatar img={AvaMain} size={25} />
           <span>Alex Grantte</span>
         </div>
       </div>
