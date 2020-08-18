@@ -7,7 +7,7 @@ const Message = ({ author, avatar, children, time }) => {
   return (
       <div className={`${s.message} ${author && s.author}`}>
         <div className={s.avatar}>
-          <Avatar img={avatar} size='50px' />
+          <Avatar img={avatar} size={50} />
         </div>
 
         <div className={s.text}>

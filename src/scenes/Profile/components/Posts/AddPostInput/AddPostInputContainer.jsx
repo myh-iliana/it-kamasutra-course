@@ -4,11 +4,7 @@ import { connect } from "react-redux";
 import AddPostInput from "./AddPostInput";
 import { addPost } from "../../../../../store/actions";
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addPost: (text, image) => dispatch(addPost(text, image)),
-  };
-};
+const mapDispatchToProps = { addPost };
 
 const AddPostInputContainer = connect(null, mapDispatchToProps)(AddPostInput);
 
