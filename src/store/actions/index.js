@@ -30,7 +30,6 @@ export const addPost = (value, image) => {
 export const FOLLOW_USER = 'FOLLOW_USER';
 export const UNFOLLOW_USER = 'UNFOLLOW_USER';
 export const SET_USERS = 'SET_USERS';
-export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 export const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 
 export const followUser = (userId) => ({ type: FOLLOW_USER, userId });
@@ -38,8 +37,6 @@ export const followUser = (userId) => ({ type: FOLLOW_USER, userId });
 export const unfollowUser = (userId) => ({ type: UNFOLLOW_USER, userId });
 
 export const setUsers = (users) => ({ type: SET_USERS, users });
-
-export const setCurrentPage = page => ({ type: SET_CURRENT_PAGE, page });
 
 export const setTotalUsersCount = totalCount => ({ type: SET_TOTAL_USERS_COUNT, totalCount });
 //--------

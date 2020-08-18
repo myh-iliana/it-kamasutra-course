@@ -1,10 +1,10 @@
-import { FOLLOW_USER, SET_CURRENT_PAGE, SET_TOTAL_USERS_COUNT, SET_USERS, UNFOLLOW_USER } from "../actions";
+import { FOLLOW_USER, SET_TOTAL_USERS_COUNT, SET_USERS, UNFOLLOW_USER } from "../actions";
 
 const initialState = {
   users: [],
   pageSize: 16,
   totalUsersCount: 0,
-  currentPage: 1,
+  isLoading: false,
 };
 
 const profile = (state = initialState, action) => {
@@ -41,12 +41,6 @@ const profile = (state = initialState, action) => {
       return {
         ...state,
         users: [...action.users],
-      };
-
-    case SET_CURRENT_PAGE:
-      return {
-        ...state,
-        currentPage: action.page,
       };
 
     case SET_TOTAL_USERS_COUNT:
