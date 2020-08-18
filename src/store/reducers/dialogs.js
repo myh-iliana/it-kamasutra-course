@@ -140,19 +140,18 @@ export const dialogs = (state = initialState, action) => {
         text: action.text,
       };
 
-      const chatIndex = state.chats.findIndex(item => item.id === action.chatId);
-      const chat = state.chats[chatIndex];
-
       return {
         ...state,
-        chats: [
-            ...state.chats.slice(0, chatIndex),
-          {
-            ...chat,
-            messages: [...chat.messages, newMessage] ,
-          },
-            ...state.chats.slice(chatIndex + 1)
-        ],
+        chats: state.chats.map(chat => {
+          if (chat.id === action.chatId) {
+            return {
+              ...chat,
+              messages: [...chat.messages, newMessage],
+            };
+          }
+
+          return chat;
+        }),
       };
 
     default: return state;

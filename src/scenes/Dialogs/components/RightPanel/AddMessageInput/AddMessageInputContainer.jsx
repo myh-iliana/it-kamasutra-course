@@ -2,8 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import AddMessageInput from "./AddMessageInput";
-
-import { addMessage } from "../../../../store/actions";
+import { addMessage } from "../../../../../store/actions";
 
 const mapDispatchToProps = (dispatch) => {
   return {

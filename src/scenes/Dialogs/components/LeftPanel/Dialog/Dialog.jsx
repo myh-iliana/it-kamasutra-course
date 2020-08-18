@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 import s from "./Dialog.module.scss";
-import Avatar from "../../../Avatar/Avatar";
+import Avatar from "../../../../../components/Avatar/Avatar";
 
 const Dialog = ({name, lastMessage, lastTime, img, online, id, ...props}) => {
   return (

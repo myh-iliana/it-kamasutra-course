@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera, faVideo } from "@fortawesome/free-solid-svg-icons";
 
 import s from './AddPostInput.module.scss';
-import Container from "../../../Container/Container";
+import Container from "../../../../../components/Container/Container";
 
 const AddPostInput = ({ addPost }) => {
   const [value, setValue] = useState('');

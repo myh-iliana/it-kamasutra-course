@@ -1,10 +1,10 @@
 import React from "react";
 
-import Ava1 from "../../../img/ava-1.jpg";
-import AvaMain from "../../../img/ava-main.jpg";
+import Ava1 from "../../../../img/ava-1.jpg";
+import AvaMain from "../../../../img/ava-main.jpg";
 
 import s from "./RightPanel.module.scss";
-import Avatar from "../../Avatar/Avatar";
+import Avatar from "../../../../components/Avatar/Avatar";
 import MessagesListContainer from "./MessagesList/MessagesListContainer";
 import AddMessageInputContainer from "./AddMessageInput/AddMessageInputContainer";
 

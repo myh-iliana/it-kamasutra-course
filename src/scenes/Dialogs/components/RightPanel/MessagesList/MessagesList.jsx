@@ -1,7 +1,7 @@
 import React from 'react';
 
-import AvaMain from "../../../../img/ava-main.jpg";
-import Ava1 from "../../../../img/ava-1.jpg";
+import AvaMain from "../../../../../img/ava-main.jpg";
+import Ava1 from "../../../../../img/ava-1.jpg";
 
 import s from './MessagesList.module.scss';
 

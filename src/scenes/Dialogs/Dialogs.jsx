@@ -1,9 +1,10 @@
 import React from "react";
 
 import s from "./Dialogs.module.scss";
-import Container from "../Container/Container";
-import LeftPanel from "./LeftPanel/LeftPanel";
-import RightPanel from "./RightPanel/RightPanel";
+
+import Container from "../../components/Container/Container";
+import LeftPanel from "./components/LeftPanel/LeftPanel";
+import RightPanel from "./components/RightPanel/RightPanel";
 
 const Dialogs = () => {
   return (

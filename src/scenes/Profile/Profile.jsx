@@ -2,10 +2,12 @@ import React from "react";
 import { Route } from "react-router-dom";
 
 import s from "./Profile.module.scss";
-import Posts from "./Posts/Posts";
-import User from "./User/User";
-import Container from "../Container/Container";
-import ProfileNav from "./ProfileNav/ProfileNav";
+import UsersList from "./components/UsersList/UsersList";
+import Posts from "./components/Posts/Posts";
+import ProfileNav from "./components/ProfileNav/ProfileNav";
+import User from "./components/User/User";
+import Container from "../../components/Container/Container";
+import { routes } from "../routes";
 
 const Profile = () => {
   return (
@@ -29,7 +31,9 @@ const Profile = () => {
           <div className={s.nav}>
             <ProfileNav />
           </div>
-          <Route path='/profile/posts' render={() => <Posts />} />
+          <Route path={routes.profilePosts} component={Posts} />
+          <Route path={routes.profileFollowers} render={() => <UsersList />} />
+          <Route path={routes.profileFollowing} render={() => <UsersList />} />
         </Container>
       </React.Fragment>
   );
