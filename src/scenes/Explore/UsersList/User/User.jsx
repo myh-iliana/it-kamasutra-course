@@ -1,7 +1,7 @@
 import React from "react";
 
 import s from "./User.module.scss";
-import NoneAvatar from '../../../../img/none-avatar.png';
+import Avatar from "../../../../components/Avatar/Avatar";
 
 const User = ({ user, followUser, unfollowUser }) => {
   const switchFollow = () => user.followed ? unfollowUser(user.id) : followUser(user.id);
@@ -13,8 +13,8 @@ const User = ({ user, followUser, unfollowUser }) => {
           <h4>{user.name}</h4>
           {/*<span>@{user.login}</span>*/}
         </div>
-        <div className={s.image}>
-          <img src={user.photos.small ? user.photos.small : NoneAvatar} alt="" />
+        <div>
+          <Avatar img={user.photos.small} size={50} />
         </div>
       </div>
       <button

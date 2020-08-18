@@ -2,13 +2,15 @@ import React from "react";
 
 import s from "./Avatar.module.scss";
 
-const Avatar = ({ img, size = "40px", className, ...props }) => {
+import NoneAvatar from '../../img/none-avatar.png';
+
+const Avatar = ({ img, size = 40, className, ...props }) => {
   return (
     <img
-      src={img}
+      src={img ? img : NoneAvatar}
       alt=""
       className={`${s.image} ${className}`}
-      style={{ "--size": size }}
+      style={{ "--size": `${size}px` }}
       {...props}
     />
   );
