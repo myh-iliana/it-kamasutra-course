@@ -6,14 +6,10 @@
 .avatar {
   align-self: center;
   margin-bottom: 25px;
+}
 
-  img {
-    width: 200px;
-    height: 200px;
-    margin-right: 10px;
-    border-radius: 50%;
-    border: 7px solid white;
-  }
+.lookForJob {
+  font-family: "Abhaya Libre", serif;
 }
 
 .details {
@@ -34,18 +30,14 @@
       }
 
       div {
-        border-radius: 50%;
-        background: #0fc19e;
-        width: 24px;
-        height: 24px;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-left: 10px;
+        margin-left: 15px;
 
         svg {
-          color: #fff;
-          font-size: 15px;
+          color: #0fc19e;
+          font-size: 20px;
         }
       }
     }
@@ -81,6 +73,41 @@
 
   span {
     color: #0fc19e;
+  }
+}
+
+.links {
+  a {
+    font-size: 20px;
+    text-decoration: none;
+    margin-right: 15px;
+    cursor: pointer;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .facebook {
+    color: #3B5998;
+  }
+  .vk {
+    color: #1A4B78;
+  }
+  .twitter {
+    color: #55ACEE;
+  }
+  .instagram {
+    color: #F44747;
+  }
+  .youtube {
+    color: #FF0000;
+  }
+  .github {
+    color: #211F1F;
+  }
+  .website {
+    color: #2F1050;
   }
 }
 

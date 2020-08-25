@@ -1,32 +1,82 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheck,
+  faLink,
+  faUnlock,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebook,
+  faGithub,
+  faInstagram,
+  faTwitter,
+  faVk,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
 
 import s from "./User.module.scss";
+import Loader from "../../../../components/Loader/Loader";
+import Avatar from "../../../../components/Avatar/Avatar";
 
-const User = () => {
+const User = ({ user }) => {
+  if (!user) return <Loader />;
+
   return (
     <div className={s.user}>
       <div className={s.avatar}>
-        <img
-          src="http://themashabrand.com/templates/Fluffs/assets/img/users/13.jpeg"
-          alt=""
-        />
+        <Avatar size={200} img={user.photos.large} withBorder />
       </div>
 
       <div className={s.details}>
         <div className={s.info}>
           <h4>
-            <span>Anna Morgan</span>
-            <div>
-              <FontAwesomeIcon icon={faCheck} />
-            </div>
+            <span>{user.fullName}</span>
+            {user.lookingForAJob && (
+              <div>
+                <FontAwesomeIcon icon={faUnlock} />
+              </div>
+            )}
           </h4>
-          <div className={s.description}>
-            Welcome to the offical account of Anna Morgan. Success is in the
-            PIXELS, <span>#pixels</span>
+          
+          {user.aboutMe && <div className={s.description}>{user.aboutMe}</div>}
+
+          {user.lookingForAJob && user.lookingForAJobDescription && (
+              <pre className={s.lookForJob}>{user.lookingForAJobDescription}</pre>
+          )}
+
+          <div className={s.links}>
+            <ContactLink
+              name="facebook"
+              icon={faFacebook}
+              link={user.contacts.facebook}
+            />
+            <ContactLink name="vk" icon={faVk} link={user.contacts.facebook} />
+            <ContactLink
+              name="twitter"
+              icon={faTwitter}
+              link={user.contacts.twitter}
+            />
+            <ContactLink
+              name="instagram"
+              icon={faInstagram}
+              link={user.contacts.instagram}
+            />
+            <ContactLink
+              name="youtube"
+              icon={faYoutube}
+              link={user.contacts.youtube}
+            />
+            <ContactLink
+              name="github"
+              icon={faGithub}
+              link={user.contacts.github}
+            />
+            <ContactLink
+              name="website"
+              icon={faLink}
+              link={user.contacts.website}
+            />
           </div>
-          <div className={s.site}>www.themashabrand.com</div>
         </div>
 
         <button>
@@ -35,6 +85,18 @@ const User = () => {
         </button>
       </div>
     </div>
+  );
+};
+
+const ContactLink = ({ link, icon, name }) => {
+  return (
+    <React.Fragment>
+      {link && (
+        <a href={link} className={s[name]} target="_blank">
+          <FontAwesomeIcon icon={icon} />
+        </a>
+      )}
+    </React.Fragment>
   );
 };
 

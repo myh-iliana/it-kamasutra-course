@@ -2,18 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
-import {
-  faSearch,
-  faBell,
-  faEnvelope,
-} from "@fortawesome/free-solid-svg-icons";
-
-import AvaMain from '../../img/ava-main.jpg';
+import { faSearch, faBell, faEnvelope, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 
 import s from "./Header.module.scss";
 import Avatar from "../Avatar/Avatar";
+import { routes } from "../../scenes/routes";
 
-const Header = () => {
+const Header = ({ isLogin, login, avatar }) => {
   return (
     <header className={s.header}>
       <div className={s.logo}>
@@ -26,26 +21,36 @@ const Header = () => {
       <div className={s.info}>
         <div className={s.search}>
           <form>
-            <input type="text" placeholder='Search here' />
+            <input type="text" placeholder="Search here" />
             <button>
               <FontAwesomeIcon icon={faSearch} />
             </button>
           </form>
         </div>
 
-        <div className={s.notifications}>
-          <FontAwesomeIcon icon={faBell} />
-          <span>4</span>
-        </div>
-        <Link to='/dialogs' className={s.messages}>
-          <FontAwesomeIcon icon={faEnvelope} />
-          <span>6</span>
-        </Link>
+        {isLogin ? (
+          <React.Fragment>
+            <div className={s.notifications}>
+              <FontAwesomeIcon icon={faBell} />
+              <span>4</span>
+            </div>
+            <Link to={routes.dialogs} className={s.messages}>
+              <FontAwesomeIcon icon={faEnvelope} />
+              <span>6</span>
+            </Link>
 
-        <div className={s.user}>
-          <Avatar img={AvaMain} size={25} />
-          <span>Alex Grantte</span>
-        </div>
+            <div className={s.user}>
+              <Avatar img={avatar} size={25} />
+              <span>{login}</span>
+            </div>
+          </React.Fragment>
+        ) : (
+          <div className={s.login}>
+            <Link to={routes.signIn}>
+              <FontAwesomeIcon icon={faSignInAlt} />
+            </Link>
+          </div>
+        )}
       </div>
     </header>
   );

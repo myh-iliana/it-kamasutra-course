@@ -3,11 +3,13 @@ import { createStore, combineReducers } from 'redux';
 import dialogs from "./reducers/dialogs";
 import profile from "./reducers/profile";
 import users from "./reducers/users";
+import auth from "./reducers/auth";
 
 const rootReducer = combineReducers({
-  profile: profile,
-  dialogs: dialogs,
-  users: users,
+  profile,
+  dialogs,
+  users,
+  auth,
 });
 
 const store = createStore(

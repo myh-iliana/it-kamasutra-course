@@ -12,9 +12,9 @@ const UsersListContainer = (props) => {
   useEffect(() => {
     setIsLoading(true);
     axios
-        .get(
-            `https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`
-        )
+        .get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`, {
+          withCredentials: true,
+        })
         .then((res) => {
           setIsLoading(false);
           setUsers(res.data.items);
@@ -25,9 +25,9 @@ const UsersListContainer = (props) => {
   const onPageChanged = (page) => {
     setIsLoading(true);
     axios
-        .get(
-            `https://social-network.samuraijs.com/api/1.0/users?page=${page.selected + 1}&count=${pageSize}`
-        )
+        .get(`https://social-network.samuraijs.com/api/1.0/users?page=${page.selected + 1}&count=${pageSize}`, {
+          withCredentials: true,
+        })
         .then((res) => {
           setIsLoading(false);
           setUsers(res.data.items);

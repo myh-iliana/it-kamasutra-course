@@ -9,7 +9,7 @@ import User from "./components/User/User";
 import Container from "../../components/Container/Container";
 import { routes } from "../routes";
 
-const Profile = () => {
+const Profile = ({ user }) => {
   return (
       <React.Fragment>
         <div className={s.row}>
@@ -27,7 +27,7 @@ const Profile = () => {
         </div>
 
         <Container className={s.profile}>
-          <User />
+          <User user={user} />
           <div className={s.nav}>
             <ProfileNav />
           </div>
