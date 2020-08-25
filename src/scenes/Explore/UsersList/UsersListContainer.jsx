@@ -1,46 +1,37 @@
-import React, {useEffect} from 'react';
-import { connect } from "react-redux";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
-import UsersList from "./UsersList";
-import {followUser, setIsLoading, setTotalUsersCount, setUsers, unfollowUser} from "../../../store/actions";
-import * as axios from "axios";
-import Loader from "../../../components/Loader/Loader";
+import * as Api from 'src/api';
+import Loader from 'src/components/Loader/Loader';
+import { followUser, setIsLoading, setTotalUsersCount, setUsers, unfollowUser } from 'src/store/actions';
+import UsersList from './UsersList';
 
 const UsersListContainer = (props) => {
   const { setUsers, pageSize, currentPage, setTotalUsersCount, isLoading, setIsLoading, ...rest } = props;
 
   useEffect(() => {
     setIsLoading(true);
-    axios
-        .get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`, {
-          withCredentials: true,
-        })
-        .then((res) => {
-          setIsLoading(false);
-          setUsers(res.data.items);
-          setTotalUsersCount(res.data.totalCount);
-        });
+    Api.Users.getAll(currentPage, pageSize).then((data) => {
+      setIsLoading(false);
+      setUsers(data.items);
+      setTotalUsersCount(data.totalCount);
+    });
   }, []);
 
   const onPageChanged = (page) => {
     setIsLoading(true);
-    axios
-        .get(`https://social-network.samuraijs.com/api/1.0/users?page=${page.selected + 1}&count=${pageSize}`, {
-          withCredentials: true,
-        })
-        .then((res) => {
-          setIsLoading(false);
-          setUsers(res.data.items);
-        });
+    Api.Users.getAll(page.selected + 1, pageSize).then((data) => {
+      setIsLoading(false);
+      setUsers(data.items);
+    });
   };
 
-  return <React.Fragment>
-    {isLoading && <Loader />}
-    <UsersList onPageChanged={onPageChanged}
-               pageSize={pageSize}
-               {...rest}
-    />
-  </React.Fragment>;
+  return (
+    <React.Fragment>
+      {isLoading && <Loader />}
+      <UsersList onPageChanged={onPageChanged} pageSize={pageSize} {...rest} />
+    </React.Fragment>
+  );
 };
 
 const mapStateToProps = (state) => {

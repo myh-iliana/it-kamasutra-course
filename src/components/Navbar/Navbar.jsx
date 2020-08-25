@@ -1,20 +1,21 @@
 import React from 'react';
+import { generatePath, NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome, faCog, faMusic, faUser, faCrosshairs } from "@fortawesome/free-solid-svg-icons";
 
 import s from './Navbar.module.scss';
-
-import { NavLink } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faCog, faMusic, faAlignLeft, faUser, faCrosshairs } from "@fortawesome/free-solid-svg-icons";
 import { routes } from "../../scenes/routes";
 
-const Navbar = () => {
+const Navbar = ({ isLogin, userId }) => {
+  const pathToProfile = generatePath(routes.profilePosts, { userId: isLogin && userId });
+
   return (
       <nav className={s.nav}>
         <NavLink to={routes.home} exact activeClassName={s.active}>
           <FontAwesomeIcon icon={faHome} />
           <span>Home</span>
         </NavLink>
-        <NavLink to={routes.profilePosts} activeClassName={s.active}>
+        <NavLink to={pathToProfile} activeClassName={s.active}>
           <FontAwesomeIcon icon={faUser} />
           <span>Profile</span>
         </NavLink>

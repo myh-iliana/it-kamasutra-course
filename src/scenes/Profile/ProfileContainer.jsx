@@ -1,20 +1,21 @@
 import React, { useEffect } from 'react';
-import * as axios from "axios";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-import Profile from "./Profile";
-import { setUserProfile } from "../../store/actions";
+import * as Api from 'src/api';
+import Profile from './Profile';
+import { setUserProfile } from '../../store/actions';
 
-const ProfileContainer = (props) => {
+const ProfileContainer = ({ user, setUserProfile, match }) => {
   useEffect(() => {
-    const { userId } = props.match.params;
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId ? userId : 2}`)
-        .then(res => props.setUserProfile(res.data));
+    const { userId } = match.params;
+    Api.Users.getById(userId).then((data) => setUserProfile(data));
   }, []);
 
   return (
-      <Profile {...props} />
+    <React.Fragment>
+      { user && <Profile user={user} /> }
+    </React.Fragment>
   );
 };
 

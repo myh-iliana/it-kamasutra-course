@@ -1,23 +1,19 @@
 import React, { useEffect } from 'react';
-import { connect } from "react-redux";
-import * as axios from "axios";
+import { connect } from 'react-redux';
 
-import Header from "./Header";
-import {setAuthUser, setAuthUserData} from "../../store/actions";
+import * as Api from 'src/api';
+import Header from './Header';
+import { setAuthUser, setAuthUserData } from '../../store/actions';
 
 const HeaderContainer = ({ setAuthUserData, setAuthUser, isLogin, login, user }) => {
   useEffect(() => {
-    axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-      withCredentials: true,
-    })
-        .then(res => {
-          if (res.data.resultCode === 0) {
-            const { id, login, email } = res.data.data;
-            setAuthUserData(id, email, login);
-            axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${id}`)
-                .then(res => setAuthUser(res.data));
-          }
-        });
+    Api.Auth.signIn().then((data) => {
+      if (data.resultCode === 0) {
+        const { id, login, email } = data.data;
+        setAuthUserData(id, email, login);
+        Api.Users.getById(id).then((data) => setAuthUser(data));
+      }
+    });
   }, []);
 
   return <Header login={login} isLogin={isLogin} avatar={user && user.photos.small} />;
