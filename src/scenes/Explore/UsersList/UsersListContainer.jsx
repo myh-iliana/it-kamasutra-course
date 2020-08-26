@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import * as Api from 'src/api';
 import Loader from 'src/components/Loader/Loader';
-import { followUser, setIsLoading, setTotalUsersCount, setUsers, unfollowUser } from 'src/store/actions';
+import { followUser, setIsLoading, setTotalUsersCount, setUsers, unfollowUser, setIsFollowingUsers } from 'src/store/actions';
 import UsersList from './UsersList';
 
 const UsersListContainer = (props) => {
@@ -40,10 +40,11 @@ const mapStateToProps = (state) => {
     pageSize: state.users.pageSize,
     totalUsersCount: state.users.totalUsersCount,
     isLoading: state.users.isLoading,
+    isFollowingUsers: state.users.isFollowingUsers,
   };
 };
 
-const mapDispatchToProps = { followUser, unfollowUser, setUsers, setTotalUsersCount, setIsLoading };
+const mapDispatchToProps = { followUser, unfollowUser, setUsers, setTotalUsersCount, setIsLoading, setIsFollowingUsers };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersListContainer);
 

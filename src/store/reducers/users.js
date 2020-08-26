@@ -1,10 +1,18 @@
-import {FOLLOW_USER, SET_IS_LOADING, SET_TOTAL_USERS_COUNT, SET_USERS, UNFOLLOW_USER} from "../actions";
+import {
+  FOLLOW_USER,
+  TOGGLE_IS_LOADING,
+  SET_TOTAL_USERS_COUNT,
+  SET_USERS,
+  UNFOLLOW_USER,
+  TOGGLE_IS_FOLLOWING_USERS,
+} from '../actions';
 
 const initialState = {
   users: [],
   pageSize: 16,
   totalUsersCount: 0,
   isLoading: false,
+  isFollowingUsers: [],
 };
 
 const profile = (state = initialState, action) => {
@@ -49,10 +57,18 @@ const profile = (state = initialState, action) => {
         totalUsersCount: action.totalCount,
       };
 
-    case SET_IS_LOADING:
+    case TOGGLE_IS_LOADING:
       return {
         ...state,
         isLoading: action.isLoading,
+      };
+
+    case TOGGLE_IS_FOLLOWING_USERS:
+      return {
+        ...state,
+        isFollowingUsers: action.isLoading
+          ? [...state.isFollowingUsers, action.userId]
+          : state.isFollowingUsers.filter((id) => id !== action.userId),
       };
 
     default:

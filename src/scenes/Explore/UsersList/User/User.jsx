@@ -5,26 +5,28 @@ import * as Api from 'src/api';
 import s from './User.module.scss';
 import Avatar from '../../../../components/Avatar/Avatar';
 import { routes } from '../../../routes';
-import * as axios from 'axios';
 
-const User = ({ user, followUser, unfollowUser }) => {
+const User = ({ user, followUser, unfollowUser, setIsFollowingUsers, isFollowingUsers }) => {
   const userProfilePath = generatePath(routes.profile, { userId: user.id });
 
   const onFollowUser = () => {
+    setIsFollowingUsers(true, user.id);
     Api.Users.follow(user.id).then((data) => {
       if (data.resultCode === 0) {
         followUser(user.id);
+        setIsFollowingUsers(false, user.id);
       }
     });
   };
 
   const onUnfollowUser = () => {
-    Api.Users.unfollow(user.id)
-      .then((data) => {
-        if (data.resultCode === 0) {
-          unfollowUser(user.id);
-        }
-      });
+    setIsFollowingUsers(true, user.id);
+    Api.Users.unfollow(user.id).then((data) => {
+      if (data.resultCode === 0) {
+        unfollowUser(user.id);
+        setIsFollowingUsers(false, user.id);
+      }
+    });
   };
 
   const switchFollow = () => (user.followed ? onUnfollowUser() : onFollowUser());
@@ -42,7 +44,11 @@ const User = ({ user, followUser, unfollowUser }) => {
           </div>
         </div>
       </Link>
-      <button onClick={switchFollow} style={{ '--bg-color': user.followed ? '#909298' : '#05cb95' }}>
+      <button
+        disabled={isFollowingUsers.some((id) => id === user.id)}
+        onClick={switchFollow}
+        style={{ '--bg-color': user.followed ? '#909298' : '#05cb95' }}
+      >
         {user.followed ? 'Unfollow' : 'Follow'}
       </button>
     </div>
