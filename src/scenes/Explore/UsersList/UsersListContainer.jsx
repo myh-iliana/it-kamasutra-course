@@ -1,29 +1,19 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import * as Api from 'src/api';
 import Loader from 'src/components/Loader/Loader';
-import { followUser, setIsLoading, setTotalUsersCount, setUsers, unfollowUser, setIsFollowingUsers } from 'src/store/actions';
+import { followUser, unfollowUser, getUsers } from '../../../store/actions';
 import UsersList from './UsersList';
 
 const UsersListContainer = (props) => {
-  const { setUsers, pageSize, currentPage, setTotalUsersCount, isLoading, setIsLoading, ...rest } = props;
+  const { pageSize, currentPage, isLoading, getUsers, ...rest } = props;
 
   useEffect(() => {
-    setIsLoading(true);
-    Api.Users.getAll(currentPage, pageSize).then((data) => {
-      setIsLoading(false);
-      setUsers(data.items);
-      setTotalUsersCount(data.totalCount);
-    });
+    getUsers(currentPage, pageSize);
   }, []);
 
   const onPageChanged = (page) => {
-    setIsLoading(true);
-    Api.Users.getAll(page.selected + 1, pageSize).then((data) => {
-      setIsLoading(false);
-      setUsers(data.items);
-    });
+    getUsers(page.selected + 1, pageSize);
   };
 
   return (
@@ -44,7 +34,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = { followUser, unfollowUser, setUsers, setTotalUsersCount, setIsLoading, setIsFollowingUsers };
+const mapDispatchToProps = { followUser, unfollowUser, getUsers };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersListContainer);
 

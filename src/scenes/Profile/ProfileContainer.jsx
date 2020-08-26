@@ -2,14 +2,13 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import * as Api from 'src/api';
 import Profile from './Profile';
-import { setUserProfile } from '../../store/actions';
+import { getUser } from '../../store/actions';
 
-const ProfileContainer = ({ user, setUserProfile, match }) => {
+const ProfileContainer = ({ user, getUser, match }) => {
   useEffect(() => {
     const { userId } = match.params;
-    Api.Users.getById(userId).then((data) => setUserProfile(data));
+    getUser(userId);
   }, []);
 
   return (
@@ -25,6 +24,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = { setUserProfile };
+const mapDispatchToProps = { getUser };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ProfileContainer));

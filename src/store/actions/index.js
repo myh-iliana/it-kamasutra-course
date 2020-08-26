@@ -1,3 +1,5 @@
+import * as Api from '../../api';
+
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const ADD_POST = 'ADD_POST';
 export const FOLLOW_USER = 'FOLLOW_USER';
@@ -29,21 +31,61 @@ export const addPost = (value, image) => {
   };
 };
 
-export const followUser = (userId) => ({ type: FOLLOW_USER, userId });
-export const unfollowUser = (userId) => ({ type: UNFOLLOW_USER, userId });
-export const setUsers = (users) => ({ type: SET_USERS, users });
-export const setTotalUsersCount = (totalCount) => ({ type: SET_TOTAL_USERS_COUNT, totalCount });
-export const setAuthUserData = (userId, email, login) => ({
-  type: SET_AUTH_USER_DATA,
-  data: { userId, email, login },
-});
-export const setAuthUser = (user) => ({ type: SET_AUTH_USER, user });
-
-export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
-
-export const setIsLoading = (isLoading) => ({ type: TOGGLE_IS_LOADING, isLoading });
-export const setIsFollowingUsers = (isLoading, userId) => ({
+const followUserSuccess = (userId) => ({ type: FOLLOW_USER, userId });
+const unfollowUserSuccess = (userId) => ({ type: UNFOLLOW_USER, userId });
+const setIsFollowingUsers = (isLoading, userId) => ({
   type: TOGGLE_IS_FOLLOWING_USERS,
   isLoading,
   userId,
 });
+
+const setAuthUserData = (userId, email, login) => ({
+  type: SET_AUTH_USER_DATA,
+  data: { userId, email, login },
+});
+const setAuthUser = (user) => ({ type: SET_AUTH_USER, user });
+
+const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
+
+const setIsLoading = (isLoading) => ({ type: TOGGLE_IS_LOADING, isLoading });
+const setUsers = (users) => ({ type: SET_USERS, users });
+const setTotalUsersCount = (totalCount) => ({ type: SET_TOTAL_USERS_COUNT, totalCount });
+
+export const getUsers = (currentPage, pageSize) => (dispatch) => {
+  dispatch(setIsLoading(true));
+  Api.Users.getAll(currentPage, pageSize).then((data) => {
+    dispatch(setIsLoading(false));
+    dispatch(setUsers(data.items));
+    dispatch(setTotalUsersCount(data.totalCount));
+  });
+};
+export const followUser = (userId) => (dispatch) => {
+  dispatch(setIsFollowingUsers(true, userId));
+  Api.Users.follow(userId).then((data) => {
+    if (data.resultCode === 0) {
+      dispatch(followUserSuccess(userId));
+      dispatch(setIsFollowingUsers(false, userId));
+    }
+  });
+};
+export const unfollowUser = (userId) => (dispatch) => {
+  dispatch(setIsFollowingUsers(true, userId));
+  Api.Users.follow(userId).then((data) => {
+    if (data.resultCode === 0) {
+      dispatch(unfollowUserSuccess(userId));
+      dispatch(setIsFollowingUsers(false, userId));
+    }
+  });
+};
+export const getUser = (userId) => (dispatch) => {
+  Api.Users.getById(userId).then((data) => dispatch(setUserProfile(data)));
+};
+export const signIn = () => (dispatch) => {
+  Api.Auth.signIn().then((data) => {
+    if (data.resultCode === 0) {
+      const { id, login, email } = data.data;
+      dispatch(setAuthUserData(id, email, login));
+      Api.Users.getById(id).then((data) => dispatch(setAuthUser(data)));
+    }
+  });
+};

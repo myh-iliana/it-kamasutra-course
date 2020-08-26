@@ -1,22 +1,15 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import * as Api from 'src/api';
 import Header from './Header';
-import { setAuthUser, setAuthUserData } from '../../store/actions';
+import { signIn } from '../../store/actions';
 
-const HeaderContainer = ({ setAuthUserData, setAuthUser, isLogin, login, user }) => {
+const HeaderContainer = ({ signIn, user, ...rest }) => {
   useEffect(() => {
-    Api.Auth.signIn().then((data) => {
-      if (data.resultCode === 0) {
-        const { id, login, email } = data.data;
-        setAuthUserData(id, email, login);
-        Api.Users.getById(id).then((data) => setAuthUser(data));
-      }
-    });
+    signIn();
   }, []);
 
-  return <Header login={login} isLogin={isLogin} avatar={user && user.photos.small} />;
+  return <Header avatar={user && user.photos.small} {...rest} />;
 };
 
 const mapStateToProps = (state) => {
@@ -27,6 +20,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = { setAuthUserData, setAuthUser };
+const mapDispatchToProps = { signIn };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);

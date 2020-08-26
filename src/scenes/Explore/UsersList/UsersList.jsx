@@ -14,7 +14,6 @@ const UsersList = (props) => {
     totalUsersCount,
     pageSize,
     onPageChanged,
-    setIsFollowingUsers,
     isFollowingUsers,
   } = props;
 
@@ -30,7 +29,6 @@ const UsersList = (props) => {
               user={user}
               followUser={followUser}
               unfollowUser={unfollowUser}
-              setIsFollowingUsers={setIsFollowingUsers}
               isFollowingUsers={isFollowingUsers}
             />
           );
