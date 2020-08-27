@@ -6,8 +6,8 @@ import { faHome, faCog, faMusic, faUser, faCrosshairs } from "@fortawesome/free-
 import s from './Navbar.module.scss';
 import { routes } from "../../scenes/routes";
 
-const Navbar = ({ isLogin, userId }) => {
-  const pathToProfile = generatePath(routes.profilePosts, { userId: isLogin && userId });
+const Navbar = ({ isAuth, userId }) => {
+  const pathToProfile = generatePath(routes.profilePosts, { userId: isAuth && userId });
 
   return (
       <nav className={s.nav}>

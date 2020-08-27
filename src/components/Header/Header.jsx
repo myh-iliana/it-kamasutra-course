@@ -8,7 +8,7 @@ import s from "./Header.module.scss";
 import Avatar from "../Avatar/Avatar";
 import { routes } from "../../scenes/routes";
 
-const Header = ({ isLogin, login, avatar }) => {
+const Header = ({ isAuth, login, avatar }) => {
   return (
     <header className={s.header}>
       <div className={s.logo}>
@@ -28,7 +28,7 @@ const Header = ({ isLogin, login, avatar }) => {
           </form>
         </div>
 
-        {isLogin ? (
+        {isAuth ? (
           <React.Fragment>
             <div className={s.notifications}>
               <FontAwesomeIcon icon={faBell} />

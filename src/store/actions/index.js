@@ -70,7 +70,7 @@ export const followUser = (userId) => (dispatch) => {
 };
 export const unfollowUser = (userId) => (dispatch) => {
   dispatch(setIsFollowingUsers(true, userId));
-  Api.Users.follow(userId).then((data) => {
+  Api.Users.unfollow(userId).then((data) => {
     if (data.resultCode === 0) {
       dispatch(unfollowUserSuccess(userId));
       dispatch(setIsFollowingUsers(false, userId));

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import s from './LeftPanel.module.scss';
-import DialogsListContainer from "./DialogsList/DialogsListContainer";
+import DialogsListContainer from "../../../../containers/Dialogs/DialogsListContainer";
 
 const LeftPanel = () => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import s from './Explore.module.scss';
-import UsersListContainer from "./UsersList/UsersListContainer";
+import UsersListContainer from "../../containers/Explore/UsersListContainer";
 
 const Explore = () => {
   return (

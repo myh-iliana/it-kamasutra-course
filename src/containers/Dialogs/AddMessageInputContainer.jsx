@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import AddMessageInput from "./AddMessageInput";
-import { addMessage } from "../../../../../store/actions";
+import AddMessageInput from "../../scenes/Dialogs/components/RightPanel/AddMessageInput/AddMessageInput";
+import { addMessage } from "../../store/actions";
 
 const mapDispatchToProps = { sendMessage: addMessage };
 

@@ -1,8 +1,8 @@
 import React from "react";
 
 import s from "./Posts.module.scss";
-import AddPostInputContainer from "./AddPostInput/AddPostInputContainer";
-import PostsListContainer from "./PostsList/PostsListContainer";
+import AddPostInputContainer from "../../../../containers/Profile/AddPostInputContainer";
+import PostsListContainer from "../../../../containers/Profile/PostsListContainer";
 
 const Posts = () => {
   return (

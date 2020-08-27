@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Navbar from './Navbar';
+import Navbar from '../components/Navbar/Navbar';
 
 const mapStateToProps = (state) => {
   return {
-    isLogin: state.auth.isLogin,
+    isAuth: state.auth.isAuth,
     userId: state.auth.userId,
   };
 };

@@ -2,8 +2,10 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import Profile from './Profile';
+import Profile from '../../scenes/Profile/Profile';
 import { getUser } from '../../store/actions';
+import withPrivateRoute from '../../hoc/withPrivateRoute';
+import { compose } from 'redux';
 
 const ProfileContainer = ({ user, getUser, match }) => {
   useEffect(() => {
@@ -11,11 +13,7 @@ const ProfileContainer = ({ user, getUser, match }) => {
     getUser(userId);
   }, []);
 
-  return (
-    <React.Fragment>
-      { user && <Profile user={user} /> }
-    </React.Fragment>
-  );
+  return <React.Fragment>{user && <Profile user={user} />}</React.Fragment>;
 };
 
 const mapStateToProps = (state) => {
@@ -26,4 +24,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = { getUser };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ProfileContainer));
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withRouter,
+  withPrivateRoute,
+)(ProfileContainer);

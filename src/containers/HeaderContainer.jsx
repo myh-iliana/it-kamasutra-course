@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import Header from './Header';
-import { signIn } from '../../store/actions';
+import Header from '../components/Header/Header';
+import { signIn } from '../store/actions';
 
 const HeaderContainer = ({ signIn, user, ...rest }) => {
   useEffect(() => {
@@ -14,7 +14,7 @@ const HeaderContainer = ({ signIn, user, ...rest }) => {
 
 const mapStateToProps = (state) => {
   return {
-    isLogin: state.auth.isLogin,
+    isAuth: state.auth.isAuth,
     login: state.auth.login,
     user: state.auth.user,
   };

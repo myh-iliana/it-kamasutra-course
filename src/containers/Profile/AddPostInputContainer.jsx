@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import AddPostInput from "./AddPostInput";
-import { addPost } from "../../../../../store/actions";
+import AddPostInput from "../../scenes/Profile/components/Posts/AddPostInput/AddPostInput";
+import { addPost } from "../../store/actions";
 
 const mapDispatchToProps = { addPost };
 

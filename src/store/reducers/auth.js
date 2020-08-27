@@ -1,10 +1,10 @@
-import {SET_AUTH_USER, SET_AUTH_USER_DATA} from "../actions";
+import { SET_AUTH_USER, SET_AUTH_USER_DATA } from '../actions';
 
 const initialState = {
   userId: null,
   login: null,
   email: null,
-  isLogin: false,
+  isAuth: false,
   user: null,
 };
 
@@ -14,7 +14,7 @@ const auth = (state = initialState, action) => {
       return {
         ...state,
         ...action.data,
-        isLogin: true,
+        isAuth: true,
       };
 
     case SET_AUTH_USER:
