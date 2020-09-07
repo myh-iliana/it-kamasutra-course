@@ -11,6 +11,7 @@ export const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
 export const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA';
 export const SET_AUTH_USER = 'SET_AUTH_USER';
 export const TOGGLE_IS_FOLLOWING_USERS = 'TOGGLE_IS_FOLLOWING_USERS';
+export const SET_USER_STATUS = 'SET_USER_STATUS';
 
 export const addMessage = (chatId, ownerId, text) => {
   const createdAt = new Date(Date.now());
@@ -51,6 +52,8 @@ const setIsLoading = (isLoading) => ({ type: TOGGLE_IS_LOADING, isLoading });
 const setUsers = (users) => ({ type: SET_USERS, users });
 const setTotalUsersCount = (totalCount) => ({ type: SET_TOTAL_USERS_COUNT, totalCount });
 
+const setUserStatus = status => ({ type: SET_USER_STATUS, status });
+
 export const getUsers = (currentPage, pageSize) => (dispatch) => {
   dispatch(setIsLoading(true));
   Api.Users.getAll(currentPage, pageSize).then((data) => {
@@ -86,6 +89,18 @@ export const signIn = () => (dispatch) => {
       const { id, login, email } = data.data;
       dispatch(setAuthUserData(id, email, login));
       Api.Users.getById(id).then((data) => dispatch(setAuthUser(data)));
+    }
+  });
+};
+export const getUserStatus = (userId) => dispatch => {
+  Api.Users.getStatus(userId).then(data => {
+    dispatch(setUserStatus(data));
+  });
+};
+export const updateUserStatus = (status) => dispatch => {
+  Api.Users.updateStatus(status).then(res => {
+    if (res.resultCode === 0) {
+      dispatch(setUserStatus(status));
     }
   });
 };

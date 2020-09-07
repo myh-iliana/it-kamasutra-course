@@ -1,4 +1,4 @@
-import { ADD_POST, FOLLOW_USER, SET_USER_PROFILE, UNFOLLOW_USER } from "../actions";
+import { ADD_POST, FOLLOW_USER, SET_USER_PROFILE, SET_USER_STATUS, UNFOLLOW_USER } from '../actions';
 
 const initialState = {
   posts: [
@@ -46,6 +46,7 @@ const initialState = {
     },
   ],
   user: null,
+  status: null,
 };
 
 const profile = (state = initialState, action) => {
@@ -77,6 +78,12 @@ const profile = (state = initialState, action) => {
       return {
         ...state,
         user: action.profile,
+      };
+
+    case SET_USER_STATUS:
+      return {
+        ...state,
+        status: action.status,
       };
 
     default:

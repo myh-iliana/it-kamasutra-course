@@ -9,7 +9,7 @@ import User from './components/User/User';
 import Container from '../../components/Container/Container';
 import { routes } from '../routes';
 
-const Profile = ({ user }) => {
+const Profile = ({ user, status, updateUserStatus, authUserId }) => {
   const pathToPosts = generatePath(routes.profilePosts, { userId: user.userId });
   const pathToFollowed = generatePath(routes.profileFollowers, { userId: user.userId });
   const pathToFollowing = generatePath(routes.profileFollowing, { userId: user.userId });
@@ -31,7 +31,7 @@ const Profile = ({ user }) => {
       </div>
 
       <Container className={s.profile}>
-        <User user={user} />
+        <User user={user} status={status} authUserId={authUserId} updateUserStatus={updateUserStatus} />
         <div className={s.nav}>
           <ProfileNav paths={{ pathToPosts, pathToFollowed, pathToFollowing }} />
         </div>

@@ -19,15 +19,23 @@ export const Users = {
     return axiosI.get(`/users?page=${currentPage}&count=${pageSize}`).then((res) => res.data);
   },
 
-  getById(id) {
-    return axiosI.get(`/profile/${id}`).then((res) => res.data);
+  getById(userId) {
+    return axiosI.get(`/profile/${userId}`).then((res) => res.data);
   },
 
-  follow(id) {
-    return axiosI.post(`/follow/${id}`).then((res) => res.data);
+  follow(userId) {
+    return axiosI.post(`/follow/${userId}`).then((res) => res.data);
   },
 
-  unfollow(id) {
-    return axiosI.delete(`/follow/${id}`).then((res) => res.data);
+  unfollow(userId) {
+    return axiosI.delete(`/follow/${userId}`).then((res) => res.data);
+  },
+
+  getStatus(userId) {
+    return axiosI.get(`/profile/status/${userId}`).then(res => res.data);
+  },
+
+  updateStatus(status) {
+    return axiosI.put(`/profile/status`, { status }).then(res => res.data);
   },
 };
