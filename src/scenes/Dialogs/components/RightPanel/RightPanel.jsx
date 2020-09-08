@@ -1,14 +1,17 @@
 import React from "react";
 
 import Ava1 from "../../../../img/ava-1.jpg";
-import AvaMain from "../../../../img/ava-main.jpg";
 
 import s from "./RightPanel.module.scss";
 import Avatar from "../../../../components/Avatar/Avatar";
-import MessagesListContainer from "../../../../containers/Dialogs/MessagesListContainer";
-import AddMessageInputContainer from "../../../../containers/Dialogs/AddMessageInputContainer";
+import MessagesListContainer from "./MessagesList/MessagesListContainer";
+import AddMessageFormRedux from "./AddMessageForm/AddMessageForm";
 
-const RightPanel = () => {
+const RightPanel = ({ sendMessage }) => {
+  const addMessage = (data) => {
+    sendMessage(1, 0, data.message);
+  };
+
   return (
     <div className={s.container}>
       <header className={s.header}>
@@ -27,7 +30,7 @@ const RightPanel = () => {
       </main>
 
       <footer className={s.footer}>
-        <AddMessageInputContainer />
+        <AddMessageFormRedux onSubmit={addMessage} />
       </footer>
     </div>
   );

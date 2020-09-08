@@ -1,0 +1,39 @@
+.icons {
+  font-size: 25px;
+  color: #0fc19e;
+
+  svg {
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+}
+
+.form {
+  > div {
+    display: flex;
+    flex-grow: 0;
+    justify-content: space-between;
+    border-top: 2px solid #f2f6f8;
+    padding: 8px 20px 5px 20px;
+
+    textarea {
+      font-family: "Helvetica Neue", sans-serif;
+      flex-grow: 1;
+      height: 45px;
+      margin-right: 45px;
+      font-size: 14px;
+      color: #696969;
+      resize: none;
+
+      &::placeholder {
+        color: darkgrey;
+      }
+    }
+  }
+
+  button {
+  }
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import PostsList from "../../scenes/Profile/components/Posts/PostsList/PostsList";
+import PostsList from "./PostsList";
 
 const mapStateToProps = (state) => {
   return {

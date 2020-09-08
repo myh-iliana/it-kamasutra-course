@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import Loader from 'src/components/Loader/Loader';
-import { followUser, unfollowUser, getUsers } from '../../store/actions';
-import UsersList from '../../scenes/Explore/UsersList/UsersList';
+import { followUser, unfollowUser, getUsers } from '../../../store/actions';
+import UsersList from './UsersList';
 
 const UsersListContainer = (props) => {
   const { pageSize, currentPage, isLoading, getUsers, ...rest } = props;

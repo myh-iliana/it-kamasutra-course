@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Navbar from '../components/Navbar/Navbar';
+import Navbar from './Navbar';
 
 const mapStateToProps = (state) => {
   return {

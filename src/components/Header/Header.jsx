@@ -2,11 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { faSearch, faBell, faEnvelope, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faEnvelope, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 
 import s from "./Header.module.scss";
 import Avatar from "../Avatar/Avatar";
 import { routes } from "../../scenes/routes";
+import SearchReduxForm from './SearchForm';
 
 const Header = ({ isAuth, login, avatar }) => {
   return (
@@ -20,12 +21,7 @@ const Header = ({ isAuth, login, avatar }) => {
 
       <div className={s.info}>
         <div className={s.search}>
-          <form>
-            <input type="text" placeholder="Search here" />
-            <button>
-              <FontAwesomeIcon icon={faSearch} />
-            </button>
-          </form>
+          <SearchReduxForm />
         </div>
 
         {isAuth ? (

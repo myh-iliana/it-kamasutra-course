@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 
-import DialogsList from "../../scenes/Dialogs/components/LeftPanel/DialogsList/DialogsList";
+import DialogsList from "./DialogsList";
 
 const mapStateToProps = (state) => {
   return {

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 
-import Profile from '../../scenes/Profile/Profile';
+import Profile from './Profile';
 import { getUser, getUserStatus, updateUserStatus } from '../../store/actions';
 import withPrivateRoute from '../../hoc/withPrivateRoute';
 import Loader from '../../components/Loader/Loader';

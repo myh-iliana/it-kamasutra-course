@@ -20,24 +20,3 @@
     padding: 0 20px;
   }
 }
-
-.search {
-  position: relative;
-  margin: 10px 0 20px 0;
-
-  input {
-    background: #f4f4f4;
-    color: #848484;
-    padding: 10px 70px 10px 20px;
-    width: 100%;
-  }
-
-  svg {
-    cursor: pointer;
-    position: absolute;
-    font-size: 18px;
-    color: #848484;
-    top: 8px;
-    right: 20px;
-  }
-}

@@ -1,16 +1,28 @@
+$width: 350px;
+$height: 400px;
+
 .item {
   cursor: pointer;
   display: flex;
+  flex-direction: column;
   align-items: center;
   margin: 20px 15px;
-  width: 360px;
-  height: 400px;
+}
+
+.cover {
+  width: $width;
+  height: $height;
   position: relative;
 
   img {
-    width: 360px;
-    height: 400px;
+    width: $width;
+    height: $height;
   }
+}
+
+
+.text {
+  width: $width;
 }
 
 .likes {

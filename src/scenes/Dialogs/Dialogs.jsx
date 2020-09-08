@@ -6,12 +6,12 @@ import Container from "../../components/Container/Container";
 import LeftPanel from "./components/LeftPanel/LeftPanel";
 import RightPanel from "./components/RightPanel/RightPanel";
 
-const Dialogs = () => {
+const Dialogs = ({ sendMessage }) => {
   return (
     <Container white className={s.dialogs}>
       <LeftPanel />
 
-      <RightPanel />
+      <RightPanel sendMessage={sendMessage} />
     </Container>
   );
 };

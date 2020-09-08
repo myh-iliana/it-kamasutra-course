@@ -1,9 +1,8 @@
 import React from 'react';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import s from './LeftPanel.module.scss';
-import DialogsListContainer from "../../../../containers/Dialogs/DialogsListContainer";
+import DialogsListContainer from "./DialogsList/DialogsListContainer";
+import SearchReduxForm from './SearchForm/SearchForm';
 
 const LeftPanel = () => {
   return (
@@ -13,10 +12,7 @@ const LeftPanel = () => {
             <h4>Messages</h4>
           </div>
 
-          <div className={s.search}>
-            <input type="text" placeholder='Search' />
-            <FontAwesomeIcon icon={faSearch} />
-          </div>
+          <SearchReduxForm />
         </header>
 
         <DialogsListContainer />

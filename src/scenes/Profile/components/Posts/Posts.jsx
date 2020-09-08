@@ -1,13 +1,13 @@
 import React from "react";
 
 import s from "./Posts.module.scss";
-import AddPostInputContainer from "../../../../containers/Profile/AddPostInputContainer";
-import PostsListContainer from "../../../../containers/Profile/PostsListContainer";
+import AddPostFormContainer from "./AddPostForm/AddPostFormContainer";
+import PostsListContainer from "./PostsList/PostsListContainer";
 
 const Posts = () => {
   return (
     <div className={s.posts}>
-      <AddPostInputContainer />
+      <AddPostFormContainer />
 
       <PostsListContainer />
     </div>

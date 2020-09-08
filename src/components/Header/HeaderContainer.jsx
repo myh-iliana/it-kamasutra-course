@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import Header from '../components/Header/Header';
-import { signIn } from '../store/actions';
+import Header from './Header';
+import { signIn } from '../../store/actions';
 
 const HeaderContainer = ({ signIn, user, ...rest }) => {
   useEffect(() => {

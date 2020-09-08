@@ -1,15 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import HeaderContainer from '../containers/HeaderContainer';
-import NavbarContainer from '../containers/NavbarContainer';
+import HeaderContainer from '../components/Header/HeaderContainer';
+import NavbarContainer from '../components/Navbar/NavbarContainer';
 import Dialogs from './Dialogs/Dialogs';
 import Explore from './Explore/Explore';
 import Music from './Music/Music';
 import Settings from './Settings/Settings';
-import ProfileContainer from '../containers/Profile/ProfileContainer';
+import ProfileContainer from './Profile/ProfileContainer';
 import Login from './Auth/Login/Login';
-import DialogsContainer from '../containers/Dialogs/DialogsContainer';
+import DialogsContainer from './Dialogs/DialogsContainer';
 
 export const routes = {
   home: '/',
