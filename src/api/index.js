@@ -9,8 +9,20 @@ const axiosI = axios.create({
 });
 
 export const Auth = {
-  signIn() {
+  me() {
     return axiosI.get(`/auth/me`).then((res) => res.data);
+  },
+
+  signIn(email, password, rememberMe = false, captcha) {
+    return axiosI.post(`/auth/login`, { email, password, rememberMe, captcha });
+  },
+
+  signOut() {
+    return axiosI.delete(`/auth/login`);
+  },
+
+  getCaptcha() {
+    return axiosI.get('/security/get-captcha-url');
   },
 };
 

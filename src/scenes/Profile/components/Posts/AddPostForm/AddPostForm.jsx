@@ -5,7 +5,10 @@ import { faCamera, faVideo } from '@fortawesome/free-solid-svg-icons';
 import s from './AddPostForm.module.scss';
 import Container from '../../../../../components/Container/Container';
 import { Field, reduxForm } from 'redux-form';
-import { required } from '../../../../../utils/validators';
+import { maxLength, required } from '../../../../../utils/validators';
+import { Textarea } from '../../../../../components/FormControls/FormControls';
+
+const maxLength150 = maxLength(150);
 
 const AddPostForm = ({ addPost, handleSubmit }) => {
   const onSubmit = (data) => {
@@ -18,10 +21,10 @@ const AddPostForm = ({ addPost, handleSubmit }) => {
   return (
     <Container white>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-        <Field component="textarea"
+        <Field component={Textarea}
                name="postText"
+               validate={[ required, maxLength150 ]}
                placeholder="Type something..."
-               validate={[ required ]}
         />
 
         <div className={s.bottom}>

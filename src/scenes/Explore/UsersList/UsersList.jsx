@@ -4,7 +4,6 @@ import ReactPaginate from 'react-paginate';
 import s from './UsersList.module.scss';
 import User from './User/User';
 import Container from '../../../components/Container/Container';
-import { setIsFollowing } from '../../../store/actions';
 
 const UsersList = (props) => {
   const {

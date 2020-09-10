@@ -1,4 +1,3 @@
-import AvaMain from "../../img/ava-main.jpg";
 import Ava1 from "../../img/ava-1.jpg";
 import Ava2 from "../../img/ava-2.jpg";
 import Ava3 from "../../img/ava-3.jpg";
@@ -9,7 +8,7 @@ import Ava7 from "../../img/ava-7.jpg";
 import Ava8 from "../../img/ava-8.jpg";
 import Ava9 from "../../img/ava-9.jpg";
 
-import { ADD_MESSAGE } from "../actions";
+import { ADD_MESSAGE } from "../actions/dialogs";
 
 const initialState = {
   chats: [
@@ -130,7 +129,6 @@ const initialState = {
 };
 
 export const dialogs = (state = initialState, action) => {
-
   switch (action.type) {
     case ADD_MESSAGE:
       const newMessage = {

@@ -2,14 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { faBell, faEnvelope, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faEnvelope, faSignInAlt, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 import s from "./Header.module.scss";
 import Avatar from "../Avatar/Avatar";
 import { routes } from "../../scenes/routes";
 import SearchReduxForm from './SearchForm';
 
-const Header = ({ isAuth, login, avatar }) => {
+const Header = ({ isAuth, login, avatar, signOut }) => {
+  const onSignOut = () => signOut();
+
   return (
     <header className={s.header}>
       <div className={s.logo}>
@@ -38,6 +40,12 @@ const Header = ({ isAuth, login, avatar }) => {
             <div className={s.user}>
               <Avatar img={avatar} size={25} />
               <span>{login}</span>
+            </div>
+
+            <div className={s.login} onClick={onSignOut}>
+              <Link to={routes.signIn}>
+                <FontAwesomeIcon icon={faSignOutAlt} />
+              </Link>
             </div>
           </React.Fragment>
         ) : (

@@ -5,7 +5,7 @@ import {
   SET_USERS,
   UNFOLLOW_USER,
   TOGGLE_IS_FOLLOWING_USERS,
-} from '../actions';
+} from '../actions/users';
 
 const initialState = {
   users: [],

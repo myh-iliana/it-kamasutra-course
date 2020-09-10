@@ -3,17 +3,12 @@ body {
     font-family: 'Abhaya Libre', serif;
 }
 
-.app-wrapper {
-    display: grid;
-    grid-template-rows: 63px 1fr;
-    grid-template-columns: 2fr 10fr;
-    grid-template-areas:
-          "header header"
-          "nav nav"
-          "content content";
-    margin: 0 auto;
+#root {
+    height: 100%;
 }
 
-.app-content {
-    grid-area: content;
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }

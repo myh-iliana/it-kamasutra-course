@@ -1,9 +1,9 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImage, faPaperclip, faSmile } from '@fortawesome/free-solid-svg-icons';
+import { Field, reduxForm } from 'redux-form';
 
 import s from './AddMessageForm.module.scss';
-import { Field, reduxForm } from 'redux-form';
 
 const AddMessageForm = ({ handleSubmit }) => {
   return (

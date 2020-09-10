@@ -4,7 +4,7 @@ import { compose } from 'redux';
 
 import Dialogs from './Dialogs';
 import { withPrivateRoute } from '../../hoc/withPrivateRoute';
-import { addMessage } from '../../store/actions';
+import { addMessage } from '../../store/actions/dialogs';
 
 const mapDispatchToProps = { sendMessage: addMessage };
 

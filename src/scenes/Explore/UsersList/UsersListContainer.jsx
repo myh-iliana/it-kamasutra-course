@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import Loader from 'src/components/Loader/Loader';
-import { followUser, unfollowUser, getUsers } from '../../../store/actions';
+import { followUser, unfollowUser, getUsers } from '../../../store/actions/users';
 import UsersList from './UsersList';
 
 const UsersListContainer = (props) => {

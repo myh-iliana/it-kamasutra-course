@@ -1,4 +1,5 @@
-import { ADD_POST, FOLLOW_USER, SET_USER_PROFILE, SET_USER_STATUS, UNFOLLOW_USER } from '../actions';
+import { ADD_POST, SET_USER_PROFILE, SET_USER_STATUS } from '../actions/profile';
+import { FOLLOW_USER, UNFOLLOW_USER } from '../actions/users';
 
 const initialState = {
   posts: [

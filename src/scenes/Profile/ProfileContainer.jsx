@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 
 import Profile from './Profile';
-import { getUser, getUserStatus, updateUserStatus } from '../../store/actions';
+import { getUser, getUserStatus, updateUserStatus } from '../../store/actions/profile';
 import withPrivateRoute from '../../hoc/withPrivateRoute';
 import Loader from '../../components/Loader/Loader';
 

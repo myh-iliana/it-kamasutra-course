@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import Header from './Header';
-import { signIn } from '../../store/actions';
+import { login, signOut } from '../../store/actions/auth';
 
-const HeaderContainer = ({ signIn, user, ...rest }) => {
+const HeaderContainer = ({ login, user, ...rest }) => {
   useEffect(() => {
-    signIn();
+    login();
   }, []);
 
   return <Header avatar={user && user.photos.small} {...rest} />;
@@ -20,6 +20,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = { signIn };
+const mapDispatchToProps = { login, signOut };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);
