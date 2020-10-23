@@ -1,7 +1,6 @@
-import React from 'react';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
-import DialogsList from "./DialogsList";
+import DialogsList from './DialogsList';
 
 const mapStateToProps = (state) => {
   return {

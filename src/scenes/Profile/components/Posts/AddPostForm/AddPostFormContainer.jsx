@@ -1,8 +1,7 @@
-import React from "react";
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
-import AddPostReduxForm from "./AddPostForm";
-import { addPost } from "../../../../../store/actions/profile";
+import AddPostReduxForm from './AddPostForm';
+import { addPost } from '../../../../../store/actions/profile';
 
 const mapDispatchToProps = { addPost };
 

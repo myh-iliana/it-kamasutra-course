@@ -1,7 +1,6 @@
-import React from 'react';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
-import MessagesList from "./MessagesList";
+import MessagesList from './MessagesList';
 
 const mapStateToProps = (state) => {
   return {

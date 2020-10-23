@@ -1,4 +1,5 @@
 import * as Api from '../../api';
+import { stopSubmit } from 'redux-form';
 
 export const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA';
 export const SET_AUTH_USER = 'SET_AUTH_USER';
@@ -28,6 +29,10 @@ export const signIn = (email, password, rememberMe, captcha) => dispatch => {
       dispatch(login());
     } else if (res.data.resultCode === 10) {
       Api.Auth.getCaptcha().then(res => dispatch(setCaptcha(res.data.url)));
+    } else {
+      dispatch(stopSubmit('login', {
+        _error: res.data.messages,
+      }));
     }
   });
 };

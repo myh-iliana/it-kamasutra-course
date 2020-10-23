@@ -1,6 +1,6 @@
 import React from 'react';
 
-import s from './UsersList.module.scss';
+// import s from './UsersList.module.scss';
 
 const UsersList = () => {
   return (
